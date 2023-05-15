@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ja">
+<link rel="stylesheet" href="/static/css/style.css">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>履歴書</title>
+</head>
+
+<body>
+
+    <h2>{{name}}さんの履歴書</h2>
+    <div id="current_date">
+        </p>
+
+        <script>
+
+            function age(year, month, day) {
+
+                // 今日の日付データを取得
+                const today = new Date();
+
+                // 生年月日の日付データを取得
+                const birthdate = new Date(year, month - 1, day);
+
+                // 今年の誕生日の日付データを取得
+                const currentYearBirthday = new Date(today.getFullYear(), birthdate.getMonth(), birthdate.getDate());
+
+                // 生まれた年と今年の差を計算
+                let age = today.getFullYear() - birthdate.getFullYear();
+
+                // 今日の日付と今年の誕生日を比較
+                if (today < currentYearBirthday) {
+                    // 今年誕生日を迎えていない場合、1を引く
+                    age--;
+                }
+
+                // 年齢の値を返す
+                document.write(age);
+            }
+            function high_in(year, month, day) {
+
+                // 生年月日の日付データを取得
+                const birthdate = new Date(year, month - 1, day);
+
+                // 生まれた年と今年の差を計算
+                let high_in_year = birthdate.getFullYear() + 16;
+
+                // 今日の日付と今年の誕生日を比較
+                if (month < 4) {
+                    // 今年誕生日を迎えていない場合、1を引く
+                    high_in_year--;
+                }
+
+                // 年齢の値を返す
+                document.write(high_in_year);
+            }
+            function high_out(year, month, day) {
+                // 生年月日の日付データを取得
+                const birthdate = new Date(year, month - 1, day);
+
+                // 生まれた年と今年の差を計算
+                let high_out_year = birthdate.getFullYear() + 19;
+
+                // 今日の日付と今年の誕生日を比較
+                if (month < 4) {
+                    // 今年誕生日を迎えていない場合、1を引く
+                    high_out_year--;
+                }
+
+                // 年齢の値を返す
+                document.write(high_out_year);
+            }
+            function uni_in(year, month, day, rounin) {
+                // 生年月日の日付データを取得
+                const birthdate = new Date(year, month - 1, day);
+
+                // 生まれた年と今年の差を計算
+                let uni_in_year = birthdate.getFullYear() + 19 + rounin;
+
+                // 今日の日付と今年の誕生日を比較
+                if (month < 4) {
+                    // 今年誕生日を迎えていない場合、1を引く
+                    uni_in_year--;
+                }
+
+                // 年齢の値を返す
+                document.write(uni_in_year);
+            }
+        </script>
+        <p>現在
+            <script>
+                var byear = {{ byear| tojson}};
+                var bmonth = {{ bmonth| tojson}};
+                var bday = {{ bday| tojson}};
+                age(byear, bmonth, bday)
+            </script>歳
+        </p>
+
+        <table>
+            <tr>
+                <th>年度</th>
+                <th>出来事</th>
+            </tr>
+            <tr>
+                <td>
+                    <script>
+                        var byear = {{ byear| tojson}};
+                        var bmonth = {{ bmonth| tojson}};
+                        var bday = {{ bday| tojson}};
+                        high_in(byear, bmonth, bday)
+                    </script>年
+                </td>
+                <td>{{high}}高校入学</td>
+            </tr>
+            <tr>
+                <td>
+                    <script>
+                        var byear = {{ byear | tojson }};
+                        var bmonth = {{ bmonth| tojson}};
+                        var bday = {{ bday| tojson}};
+                        high_out(byear, bmonth, bday)
+                    </script>年
+                </td>
+                <td>{{high}}高校卒業</td>
+            </tr>
+
+            <tr>
+                <td>
+                    <script>
+                        var byear = {{ byear | tojson }};
+                        var bmonth = {{ bmonth| tojson}};
+                        var bday = {{ bday| tojson}};
+                        var rounin = {{ rounin| tojson}};
+                        uni_in(byear, bmonth, bday, rounin)
+                    </script>年
+                </td>
+                <td>{{univ}}大学入学</td>
+            </tr>
+        </table>
+</body>
+
+</html>

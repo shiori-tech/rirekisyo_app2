@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<link rel="stylesheet" href="/static/css/style.css">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>履歴書メーカー</title>
+</head>
+
+<body>
+    <h2>履歴書メーカー</h2>
+
+    <form action="{{url_for('contact_complete')}}" method="POST" novalidate="novalidate">
+        <table>
+            <tr>
+                <td>名前</td>
+                <td>
+                    <input type="text" name="username" value="{{username}}" placeholder="名前" />
+                </td>
+            </tr>
+            <tr>
+                <td> 誕生日</td>
+                <td>
+                    <input type="text" name="byear" placeholder="年" size="5" />年
+
+                    <input type="text" name="bmonth" placeholder="月" size="3" />月
+
+                    <input type="text" name="bday" placeholder="日" size="3" />日
+                </td>
+            </tr>
+
+            <tr>
+                <td>高校名</td>
+                <td>
+                    <input type="text" name="high" value="{{high}}" placeholder="高校名" />
+                    高校
+                </td>
+            </tr>
+            <tr>
+                <td>大学名</td>
+                <td>
+                    <input type="text" name="univ" value="{{univ}}" placeholder="大学名" />
+                    大学
+                    <input type="radio" name="rounin" value="0" checked>現役</input>
+                    <input type="radio" name="rounin" value="1">一浪</input>
+                    <input type="radio" name="rounin" value="2">二浪</input>
+                </td>
+
+            </tr>
+
+        </table>
+
+        <input type="submit" value="作成" />
+    </form>
+
+</body>
+
+</html>
